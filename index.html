@@ -13,16 +13,31 @@
     <script type="text/javascript" src="./file/jscex-async-powerpack.min.js"></script>
     <script type="text/javascript" src="./file/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./file/love.js" charset="utf-8"></script>
-    <script>
-        function playAudio() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
+    <style>
+        .floating-word {
+            position: fixed;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+            color: rgb(190, 26, 37);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
-    </script>
+        
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+            25% { transform: translateY(-30px) translateX(20px); opacity: 0.9; }
+            50% { transform: translateY(-60px) translateX(-10px); opacity: 0.6; }
+            75% { transform: translateY(-30px) translateX(-30px); opacity: 0.8; }
+            100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+        }
+    </style>
 </head>
 <body>
     <div id="main">
         <div id="error"><a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a> (<a href="http://firefox.com.cn/download/">Firefox</a>)</div>
+        <!-- 🎵 Música de fondo - Reemplaza aud.mp3 con tu canción de Danny Ocean -->
         <audio autoplay="autoplay" height="100" width="100" id="myAudio">
             <source src="file/aud.mp3" type="audio/mp3" />
             <embed height="100" width="100" src="file/aud.mp3" />
@@ -30,13 +45,26 @@
         <div id="wrap">
             <div id="text">
                 <div id="code">
-                    <span class="say">My beautiful wife 💞</span><br>
-                    <span class="say">Happy Birthday 🎈</span><br>
-                    <span class="say">May Allah bless you 🍀</span><br>
-                    <span class="say">And give u many happiness 💕</span><br>
-                    <span class="say">I loved you ❤️</span><br>
-                    <span class="say">And I will always love u 🥺 ❤️</span><br>
-                    <span class="say">Hope u have a great day today ❤️😘</span><br>
+                    <span class="say">Te amo mucho 💞</span><br>
+                    <span class="say">Amor mío 💕</span><br>
+                    <span class="say">Feliz Cumpleaños 🎈</span><br>
+                    <span class="say">Que pases bien con tu familia 👨‍👩‍👧‍👦</span><br>
+                    <span class="say">Siempre te amaré ❤️</span><br>
+                    <span class="say">Eres mi todo 🥺 ❤️</span><br>
+                    <span class="say">¡Que sea especial este día! ❤️😘</span><br>
+                    <span class="say">Eres lo mejor que me pasó 🌹</span><br>
+                    <span class="say">Mi corazón es tuyo para siempre 💗</span><br>
+                    <span class="say">Contigo quiero pasar cada día 🌅</span><br>
+                    <span class="say">Eres hermosa por dentro y por fuera ✨</span><br>
+                    <span class="say">Tu sonrisa me enamora cada día 😊</span><br>
+                    <span class="say">Te extraño cuando no estás conmigo 🥰</span><br>
+                    <span class="say">Gracias por todo tu amor 💝</span><br>
+                    <span class="say">Juntos somos infinito 🌙</span><br>
+                    <span class="say">Eres mi razón de sonreír ✨</span><br>
+                    <span class="say">Te amo y siempre lo haré 🔥❤️</span><br>
+                    <span class="say">Desde que te vi fuiste algo especial para mí 👀💫</span><br>
+                    <span class="say">No olvides que eres lo más importante 💎</span><br>
+                    <span class="say">Te amo con todo mi corazón, amor 💕❤️</span><br>
                 </div>
             </div>
             <div id="clock-box">
@@ -85,7 +113,7 @@
                 ]] 
             ],
             bloom: {
-                num: 700,
+                num: 1500,
                 width: 1080,
                 height: 650,
             },
@@ -179,5 +207,47 @@
         runAsync().start();
     })();
     </script>
-</body>
-</html>
+
+    <script>
+        // Función para reproducir audio
+        function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }
+
+        // Función para crear palabras flotantes de amor
+        function createFloatingWords() {
+            var loveWords = [
+                "Te amo ❤️", "Amor ✨", "Siempre 💕", "Infinito 🌙",
+                "Hermosa 👸", "Especial 💎", "Corazón 💗", "Juntos 🥰",
+                "Sonrisa 😊", "Besos 😘", "Dulce 🍯", "Mía ❤️",
+                "Tuyo 💑", "Orgulloso 💯", "Amor mío 💕", "Te quiero 🥺",
+                "Perfecta ✨", "Vida 🌹", "Luna 🌙", "Estrella ⭐",
+                "Contigo 👩‍❤️‍👨", "Eternidad 💫", "Promesa 🤝", "Pasión 🔥",
+                "Eres mi todo 💞", "Mi reina 👑", "Princesa 💝", "Así es"
+            ];
+
+            // Crear palabras flotantes alrededor de la pantalla
+            for (var i = 0; i < 30; i++) {
+                var word = document.createElement('div');
+                word.className = 'floating-word';
+                word.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
+                
+                // Posición aleatoria alrededor de la pantalla
+                var randomX = Math.random() * (window.innerWidth - 100);
+                var randomY = Math.random() * (window.innerHeight - 100);
+                
+                word.style.left = randomX + 'px';
+                word.style.top = randomY + 'px';
+                word.style.animationDelay = (Math.random() * 5) + 's';
+                word.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                
+                document.body.appendChild(word);
+            }
+        }
+
+        // Crear palabras flotantes cuando se carga la página
+        window.addEventListener('load', function() {
+            createFloatingWords();
+        });
+    </script>

@@ -50,11 +50,19 @@ Edit the `<span class="say">` elements in `index.html`:
 ### Change Colors
 Modify the color values in `file/default.css`:
 ```css
-color: #a60012; /* Change this to your preferred color */
+color: #8a0414; /* Change this to your preferred color */
 ```
 
 ### Add Your Audio
 Replace `file/aud.mp3` with your own MP3 file (same name and location)
+
+**🎵 Para usar una canción de Danny Ocean:**
+1. Descarga tu canción favorita de Danny Ocean (ej: "Devuélveme el Corazón", "Plan B", etc.)
+2. Convierte el archivo a formato .mp3 si es necesario
+3. Renómbralo como `aud.mp3`
+4. Colócalo en la carpeta `file/`
+
+El archivo debe estar en: `/file/aud.mp3`
 
 ### Update Day Counter
 Edit the `startDate` in `file/functions.js`:
