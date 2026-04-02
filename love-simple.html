@@ -1,213 +1,96 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Feliz Cumpleaños 💕</title>
+    <title>Te Amo - Feliz Cumpleanos</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; }
         body {
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            font-family: Arial;
             display: flex;
-            align-items: center;
             justify-content: center;
-            overflow: hidden;
+            align-items: center;
         }
-
-        .container {
-            width: 90%;
-            max-width: 900px;
+        .box {
+            width: 80%;
+            max-width: 750px;
             background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 40px;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 100;
             position: relative;
-            z-index: 10;
         }
-
-        .messages {
-            font-size: 28px;
-            line-height: 2.5;
-            color: rgb(190, 26, 37);
+        .msg {
+            font-size: 22px;
+            color: #c20017;
             font-weight: bold;
-            animation: fadeIn 1s ease-in;
+            margin: 10px 0;
+            line-height: 1.8;
         }
-
-        .message-line {
-            margin: 15px 0;
-            opacity: 0;
-            animation: slideIn 0.8s ease-out forwards;
-        }
-
-        .message-line:nth-child(1) { animation-delay: 0.2s; }
-        .message-line:nth-child(2) { animation-delay: 0.4s; }
-        .message-line:nth-child(3) { animation-delay: 0.6s; }
-        .message-line:nth-child(4) { animation-delay: 0.8s; }
-        .message-line:nth-child(5) { animation-delay: 1s; }
-        .message-line:nth-child(6) { animation-delay: 1.2s; }
-        .message-line:nth-child(7) { animation-delay: 1.4s; }
-        .message-line:nth-child(8) { animation-delay: 1.6s; }
-        .message-line:nth-child(9) { animation-delay: 1.8s; }
-        .message-line:nth-child(10) { animation-delay: 2s; }
-        .message-line:nth-child(11) { animation-delay: 2.2s; }
-        .message-line:nth-child(12) { animation-delay: 2.4s; }
-        .message-line:nth-child(13) { animation-delay: 2.6s; }
-        .message-line:nth-child(14) { animation-delay: 2.8s; }
-        .message-line:nth-child(15) { animation-delay: 3s; }
-        .message-line:nth-child(16) { animation-delay: 3.2s; }
-        .message-line:nth-child(17) { animation-delay: 3.4s; }
-        .message-line:nth-child(18) { animation-delay: 3.6s; }
-        .message-line:nth-child(19) { animation-delay: 3.8s; }
-        .message-line:nth-child(20) { animation-delay: 4s; }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .floating-word {
+        .txt {
             position: fixed;
+            font-size: 18px;
             font-weight: bold;
-            font-size: 20px;
-            opacity: 0.6;
+            color: #c20017;
+            opacity: 0.5;
+            z-index: 1;
             pointer-events: none;
-            color: rgb(190, 26, 37);
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
-            z-index: 1;
-            animation: float 8s ease-in-out infinite;
+            animation: mover 8s infinite ease-in-out;
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
-            25% { transform: translateY(-50px) translateX(40px); opacity: 0.8; }
-            50% { transform: translateY(-100px) translateX(-30px); opacity: 0.5; }
-            75% { transform: translateY(-50px) translateX(-50px); opacity: 0.7; }
-            100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
-        }
-
-        .heart {
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); }
-            50% { transform: scale(1); }
-        }
-
-        .particles {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: rgb(190, 26, 37);
-            border-radius: 50%;
-            opacity: 0.3;
-            z-index: 1;
+        @keyframes mover {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -40px); }
+            50% { transform: translate(-20px, -80px); }
+            75% { transform: translate(-40px, -40px); }
+            100% { transform: translate(0, 0); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="messages">
-            <div class="message-line">Te amo mucho <span class="heart">💞</span></div>
-            <div class="message-line">Amor mío 💕</div>
-            <div class="message-line">Feliz Cumpleaños <span class="heart">🎈</span></div>
-            <div class="message-line">Que pases bien con tu familia 👨‍👩‍👧‍👦</div>
-            <div class="message-line">Siempre te amaré <span class="heart">❤️</span></div>
-            <div class="message-line">Eres mi todo 🥺 ❤️</div>
-            <div class="message-line">¡Que sea especial este día! ❤️😘</div>
-            <div class="message-line">Eres lo mejor que me pasó 🌹</div>
-            <div class="message-line">Mi corazón es tuyo para siempre <span class="heart">💗</span></div>
-            <div class="message-line">Contigo quiero pasar cada día 🌅</div>
-            <div class="message-line">Eres hermosa por dentro y por fuera ✨</div>
-            <div class="message-line">Tu sonrisa me enamora cada día 😊</div>
-            <div class="message-line">Te extraño cuando no estás conmigo 🥰</div>
-            <div class="message-line">Gracias por todo tu amor 💝</div>
-            <div class="message-line">Juntos somos infinito <span class="heart">🌙</span></div>
-            <div class="message-line">Eres mi razón de sonreír ✨</div>
-            <div class="message-line">Te amo y siempre lo haré 🔥❤️</div>
-            <div class="message-line">Desde que te vi fuiste algo especial para mí 👀💫</div>
-            <div class="message-line">No olvides que eres lo más importante 💎</div>
-            <div class="message-line">Te amo con todo mi corazón, amor <span class="heart">💕❤️</span></div>
-        </div>
+    <div class="box">
+        <div class="msg">Te amo mucho</div>
+        <div class="msg">Amor mio</div>
+        <div class="msg">Feliz Cumpleanos</div>
+        <div class="msg">Que pases bien con tu familia</div>
+        <div class="msg">Siempre te amare</div>
+        <div class="msg">Eres mi todo</div>
+        <div class="msg">Que sea especial este dia</div>
+        <div class="msg">Eres lo mejor que me paso</div>
+        <div class="msg">Mi corazon es tuyo para siempre</div>
+        <div class="msg">Contigo quiero pasar cada dia</div>
+        <div class="msg">Eres hermosa por dentro y fuera</div>
+        <div class="msg">Tu sonrisa me enamora cada dia</div>
+        <div class="msg">Te extrano cuando no estas</div>
+        <div class="msg">Gracias por todo tu amor</div>
+        <div class="msg">Juntos somos infinito</div>
+        <div class="msg">Eres mi razon de sonreir</div>
+        <div class="msg">Te amo y siempre lo hare</div>
+        <div class="msg">Desde que te vi fuiste especial</div>
+        <div class="msg">Eres lo mas importante</div>
+        <div class="msg">Te amo con todo mi corazon</div>
     </div>
 
     <script>
-        // Crear palabras flotantes de amor
-        function createFloatingWords() {
-            var loveWords = [
-                "Te amo ❤️", "Amor ✨", "Siempre 💕", "Infinito 🌙",
-                "Hermosa 👸", "Especial 💎", "Corazón 💗", "Juntos 🥰",
-                "Sonrisa 😊", "Besos 😘", "Dulce 🍯", "Mía ❤️",
-                "Tuyo 💑", "Perfecto 💯", "Amor mío 💕", "Te quiero 🥺",
-                "Perfecta ✨", "Vida 🌹", "Luna 🌙", "Estrella ⭐",
-                "Contigo 👩‍❤️‍👨", "Eternidad 💫", "Mi reina 👑", "Princesa 💝",
-                "Eres mi todo 💞", "Hermosa 🌸", "Pasión 🔥", "Siempre juntos 💑"
-            ];
-
-            for (var i = 0; i < 35; i++) {
-                var word = document.createElement('div');
-                word.className = 'floating-word';
-                word.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
-                
-                var randomX = Math.random() * (window.innerWidth - 100);
-                var randomY = Math.random() * (window.innerHeight - 100);
-                
-                word.style.left = randomX + 'px';
-                word.style.top = randomY + 'px';
-                word.style.animationDelay = (Math.random() * 5) + 's';
-                word.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                
-                document.body.appendChild(word);
-            }
+        var palabras = ["Te amo", "Amor", "Siempre", "Infinito", "Hermosa", "Especial", 
+                       "Corazon", "Juntos", "Sonrisa", "Besos", "Dulce", "Mia", "Tuyo", 
+                       "Perfecto", "Mi amor", "Te quiero", "Perfecta", "Vida", "Luna", 
+                       "Estrella", "Contigo", "Eternidad", "Mi reina", "Princesa"];
+        
+        for (var i = 0; i < 40; i++) {
+            var div = document.createElement('div');
+            div.className = 'txt';
+            div.textContent = palabras[Math.floor(Math.random() * palabras.length)];
+            div.style.left = Math.random() * window.innerWidth + 'px';
+            div.style.top = Math.random() * window.innerHeight + 'px';
+            div.style.animationDelay = (Math.random() * 4) + 's';
+            div.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(div);
         }
-
-        // Crear partículas
-        function createParticles() {
-            setInterval(function() {
-                var particle = document.createElement('div');
-                particle.className = 'particles';
-                
-                var randomX = Math.random() * window.innerWidth;
-                var randomY = Math.random() * window.innerHeight;
-                
-                particle.style.left = randomX + 'px';
-                particle.style.top = randomY + 'px';
-                
-                document.body.appendChild(particle);
-                
-                var duration = Math.random() * 2 + 1;
-                setTimeout(function() {
-                    particle.remove();
-                }, duration * 1000);
-            }, 200);
-        }
-
-        window.addEventListener('load', function() {
-            createFloatingWords();
-            createParticles();
-        });
     </script>
 </body>
 </html>
