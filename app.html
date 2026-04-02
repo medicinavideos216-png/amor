@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo</title>
+    <link rel="stylesheet" href="file/default.css">
+    <style>
+        body { 
+            background: linear-gradient(to right, #667eea, #764ba2) !important;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .msg { 
+            font-size: 20px;
+            color: #c20017;
+            font-weight: bold;
+            margin: 8px 0;
+        }
+        .float-text {
+            position: fixed;
+            font-size: 16px;
+            font-weight: bold;
+            color: #c20017;
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+            animation: flotante 8s ease-in-out infinite;
+        }
+        @keyframes flotante {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -40px); }
+            50% { transform: translate(-20px, -80px); }
+            75% { transform: translate(-40px, -40px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="msg">Te amo mucho</div>
+        <div class="msg">Amor mio</div>
+        <div class="msg">Feliz Cumpleanos</div>
+        <div class="msg">Que pases bien con tu familia</div>
+        <div class="msg">Siempre te amare</div>
+        <div class="msg">Eres mi todo</div>
+        <div class="msg">Que sea especial este dia</div>
+        <div class="msg">Eres lo mejor que me paso</div>
+        <div class="msg">Mi corazon es tuyo para siempre</div>
+        <div class="msg">Contigo quiero pasar cada dia</div>
+        <div class="msg">Eres hermosa por dentro y fuera</div>
+        <div class="msg">Tu sonrisa me enamora cada dia</div>
+        <div class="msg">Te extrano cuando no estas</div>
+        <div class="msg">Gracias por todo tu amor</div>
+        <div class="msg">Juntos somos infinito</div>
+        <div class="msg">Eres mi razon de sonreir</div>
+        <div class="msg">Te amo y siempre lo hare</div>
+        <div class="msg">Desde que te vi fuiste especial</div>
+        <div class="msg">Eres lo mas importante</div>
+        <div class="msg">Te amo con todo mi corazon</div>
+    </div>
+
+    <script src="file/jquery.min.js"></script>
+    <script>
+        var palabras = ["Te amo", "Amor", "Siempre", "Infinito", "Hermosa", "Especial", "Corazon", "Juntos", "Sonrisa", "Besos", "Dulce", "Mia", "Tuyo", "Perfecto", "Mi amor", "Te quiero", "Perfecta", "Vida", "Luna", "Estrella"];
+        
+        for (var i = 0; i < 50; i++) {
+            var div = document.createElement('div');
+            div.className = 'float-text';
+            div.textContent = palabras[Math.floor(Math.random() * palabras.length)];
+            div.style.left = Math.random() * window.innerWidth + 'px';
+            div.style.top = Math.random() * window.innerHeight + 'px';
+            div.style.animationDelay = (Math.random() * 4) + 's';
+            div.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(div);
+        }
+    </script>
+</body>
+</html>
