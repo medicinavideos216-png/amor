@@ -1,253 +1,97 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>HBD love</title>	    
-    <link type="text/css" rel="stylesheet" href="./file/default.css">
-    <script type="text/javascript" src="./file/jquery.min.js"></script>
-    <script type="text/javascript" src="./file/jscex.min.js"></script>
-    <script type="text/javascript" src="./file/jscex-parser.js"></script>
-    <script type="text/javascript" src="./file/jscex-jit.js"></script>
-    <script type="text/javascript" src="./file/jscex-builderbase.min.js"></script>
-    <script type="text/javascript" src="./file/jscex-async.min.js"></script>
-    <script type="text/javascript" src="./file/jscex-async-powerpack.min.js"></script>
-    <script type="text/javascript" src="./file/functions.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./file/love.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo - Feliz Cumpleanos</title>
+    <link rel="stylesheet" href="file/default.css">
     <style>
-        .floating-word {
-            position: fixed;
-            font-weight: bold;
-            font-size: 14px;
-            opacity: 0.7;
-            pointer-events: none;
-            animation: float 8s ease-in-out infinite;
-            color: rgb(190, 26, 37);
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        * { margin: 0; padding: 0; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
-            25% { transform: translateY(-30px) translateX(20px); opacity: 0.9; }
-            50% { transform: translateY(-60px) translateX(-10px); opacity: 0.6; }
-            75% { transform: translateY(-30px) translateX(-30px); opacity: 0.8; }
-            100% { transform: translateY(0px) translateX(0px); opacity: 0.7; }
+        .contenedor {
+            background: white;
+            border-radius: 15px;
+            padding: 50px 30px;
+            width: 85%;
+            max-width: 750px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 100;
+            position: relative;
+        }
+        .mensaje {
+            font-size: 22px;
+            color: #c20017;
+            font-weight: bold;
+            margin: 10px 0;
+            line-height: 1.8;
+        }
+        .palabra-flotante {
+            position: fixed;
+            font-size: 16px;
+            font-weight: bold;
+            color: #c20017;
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+            animation: mover 8s ease-in-out infinite;
+        }
+        @keyframes mover {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -40px); }
+            50% { transform: translate(-20px, -80px); }
+            75% { transform: translate(-40px, -40px); }
+            100% { transform: translate(0, 0); }
         }
     </style>
 </head>
 <body>
-    <div id="main">
-        <div id="error"><a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a> (<a href="http://firefox.com.cn/download/">Firefox</a>)</div>
-        <!-- 🎵 Música de fondo - Reemplaza aud.mp3 con tu canción de Danny Ocean -->
-        <audio autoplay="autoplay" height="100" width="100" id="myAudio">
-            <source src="file/aud.mp3" type="audio/mp3" />
-            <embed height="100" width="100" src="file/aud.mp3" />
-        </audio>
-        <div id="wrap">
-            <div id="text">
-                <div id="code">
-                    <span class="say">Te amo mucho 💞</span><br>
-                    <span class="say">Amor mío 💕</span><br>
-                    <span class="say">Feliz Cumpleaños 🎈</span><br>
-                    <span class="say">Que pases bien con tu familia 👨‍👩‍👧‍👦</span><br>
-                    <span class="say">Siempre te amaré ❤️</span><br>
-                    <span class="say">Eres mi todo 🥺 ❤️</span><br>
-                    <span class="say">¡Que sea especial este día! ❤️😘</span><br>
-                    <span class="say">Eres lo mejor que me pasó 🌹</span><br>
-                    <span class="say">Mi corazón es tuyo para siempre 💗</span><br>
-                    <span class="say">Contigo quiero pasar cada día 🌅</span><br>
-                    <span class="say">Eres hermosa por dentro y por fuera ✨</span><br>
-                    <span class="say">Tu sonrisa me enamora cada día 😊</span><br>
-                    <span class="say">Te extraño cuando no estás conmigo 🥰</span><br>
-                    <span class="say">Gracias por todo tu amor 💝</span><br>
-                    <span class="say">Juntos somos infinito 🌙</span><br>
-                    <span class="say">Eres mi razón de sonreír ✨</span><br>
-                    <span class="say">Te amo y siempre lo haré 🔥❤️</span><br>
-                    <span class="say">Desde que te vi fuiste algo especial para mí 👀💫</span><br>
-                    <span class="say">No olvides que eres lo más importante 💎</span><br>
-                    <span class="say">Te amo con todo mi corazón, amor 💕❤️</span><br>
-                </div>
-            </div>
-            <div id="clock-box">
-                <span id="clock">577 days 0 hours 0 minutes 0 seconds</span>
-            </div>
-            <canvas id="canvas" width="1100" height="680"></canvas>
-        </div>
+    <div class="contenedor">
+        <div class="mensaje">Te amo mucho</div>
+        <div class="mensaje">Amor mio</div>
+        <div class="mensaje">Feliz Cumpleanos</div>
+        <div class="mensaje">Que pases bien con tu familia</div>
+        <div class="mensaje">Siempre te amare</div>
+        <div class="mensaje">Eres mi todo</div>
+        <div class="mensaje">Que sea especial este dia</div>
+        <div class="mensaje">Eres lo mejor que me paso</div>
+        <div class="mensaje">Mi corazon es tuyo para siempre</div>
+        <div class="mensaje">Contigo quiero pasar cada dia</div>
+        <div class="mensaje">Eres hermosa por dentro y fuera</div>
+        <div class="mensaje">Tu sonrisa me enamora cada dia</div>
+        <div class="mensaje">Te extrano cuando no estas</div>
+        <div class="mensaje">Gracias por todo tu amor</div>
+        <div class="mensaje">Juntos somos infinito</div>
+        <div class="mensaje">Eres mi razon de sonreir</div>
+        <div class="mensaje">Te amo y siempre lo hare</div>
+        <div class="mensaje">Desde que te vi fuiste especial</div>
+        <div class="mensaje">Eres lo mas importante</div>
+        <div class="mensaje">Te amo con todo mi corazon</div>
     </div>
 
+    <script src="file/jquery.min.js"></script>
     <script>
-    (function() {
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;
-        }
-
-        var width = canvas.width();
-        var height = canvas.height();        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
-
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 1500,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
+        var palabrasAleatorias = ["Te amo", "Amor", "Siempre", "Infinito", "Hermosa", "Especial", "Corazon", "Juntos", "Sonrisa", "Besos", "Dulce", "Mia", "Tuyo", "Perfecto", "Mi amor", "Te quiero", "Perfecta", "Vida", "Luna", "Estrella", "Contigo", "Eternidad", "Mi reina", "Princesa"];
+        
+        (function crearPalabrasFlotantes() {
+            for (var i = 0; i < 50; i++) {
+                var elemento = document.createElement('div');
+                elemento.className = 'palabra-flotante';
+                elemento.textContent = palabrasAleatorias[Math.floor(Math.random() * palabrasAleatorias.length)];
+                elemento.style.left = Math.random() * window.innerWidth + 'px';
+                elemento.style.top = Math.random() * window.innerHeight + 'px';
+                elemento.style.animationDelay = (Math.random() * 4) + 's';
+                elemento.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                document.body.appendChild(elemento);
             }
-        }
-
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
-
-        canvas.click(function(e) {
-            playAudio();
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-            }
-        }).mousemove(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
-
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
-
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-                tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
-
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-                tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
-
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
-
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
-
-        var textAnimate = eval(Jscex.compile("async", function () {
-            $("#code").show().typewriter();
-        }));
-	    
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-            textAnimate().start();
-        }));
-
-        runAsync().start();
-    })();
+        })();
     </script>
-
-    <script>
-        // Función para reproducir audio
-        function playAudio() {
-            var audio = document.getElementById("myAudio");
-            audio.play();
-        }
-
-        // Función para crear palabras flotantes de amor
-        function createFloatingWords() {
-            var loveWords = [
-                "Te amo ❤️", "Amor ✨", "Siempre 💕", "Infinito 🌙",
-                "Hermosa 👸", "Especial 💎", "Corazón 💗", "Juntos 🥰",
-                "Sonrisa 😊", "Besos 😘", "Dulce 🍯", "Mía ❤️",
-                "Tuyo 💑", "Orgulloso 💯", "Amor mío 💕", "Te quiero 🥺",
-                "Perfecta ✨", "Vida 🌹", "Luna 🌙", "Estrella ⭐",
-                "Contigo 👩‍❤️‍👨", "Eternidad 💫", "Promesa 🤝", "Pasión 🔥",
-                "Eres mi todo 💞", "Mi reina 👑", "Princesa 💝", "Así es"
-            ];
-
-            // Crear palabras flotantes alrededor de la pantalla
-            for (var i = 0; i < 30; i++) {
-                var word = document.createElement('div');
-                word.className = 'floating-word';
-                word.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
-                
-                // Posición aleatoria alrededor de la pantalla
-                var randomX = Math.random() * (window.innerWidth - 100);
-                var randomY = Math.random() * (window.innerHeight - 100);
-                
-                word.style.left = randomX + 'px';
-                word.style.top = randomY + 'px';
-                word.style.animationDelay = (Math.random() * 5) + 's';
-                word.style.animationDuration = (Math.random() * 4 + 6) + 's';
-                
-                document.body.appendChild(word);
-            }
-        }
-
-        // Crear palabras flotantes cuando se carga la página
-        window.addEventListener('load', function() {
-            createFloatingWords();
-        });
-    </script>
+</body>
